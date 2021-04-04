@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <title>Location View</title>
+   <link rel="icon" href="#" type="image/gif" sizes="16x16" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="../Assets/MainView.css" />
+
+   <!-- For Google Maps, straight from Google's API example -->
+   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+</head>
+
+<body>
+   <div class="header">Location History</div>
+
+   <ul class="sidenav">
+      <li><a href="#">Location</a></li>
+      <li>
+         <a href="../Communication View/communicationHist.html">Communication</a>
+      </li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="#">Stories</a></li>
+      <li><a href="#">Shop</a></li>
+   </ul>
+
+   <div class="infoPane">
+      <div class="info">
+         <h3>Location Data Collected by Snapchat</h3>
+         <p>
+            In this view you are able to see all of the data that Snapchat
+            has saved about your location
+         </p>
+         <p>
+            Whenever location is enabled in Snapchat (required for several
+            features), Snapchat records your location every time you open the
+            app. This log is saved for what appears to be 6 months. After 6
+            months, some location data is still saved for 2 years but the log
+            of every location that the app is opened is cleared.
+         </p>
+         <p>
+            Snapchat also performs analysis on this data, such as which
+            locations are your home and work along with which businesses you
+            visit. This analysis is done in order to serve advertisements
+            that are more effective and relevant to the places you visit.
+         </p>
+         <div class="buttons">
+            <!-- This should redirect to a new page about how to request Snapchat to delete their data -->
+            <a href="../HomepageA.html">
+               <button onclick="localStorage.clear()">Clear Data</button></a>
+         </div>
+      </div>
+   </div>
+
+   <div class="content">
+      <div id="map"></div>
+      <br>
+      <div class="timeline">
+         <div class="playcontainer">
+            <button onclick="toggle()" class="play" type="button" value="STOP" id="startStop">
+            </button>
+         </div>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="50" value="0" class="slider" id="sliderPosition" />
+         </div>
+         <div class="clearMarkers">
+            <button onclick="clearMarkers()">Clear Markers</button>
+         </div>
+         <div class="timelinePosition">
+            <p>Date: <span id="dateIndicator"></span></p>
+         </div>
+      </div>
+
+      <div class="expandableLists">
+         <details>
+            <summary>
+               Home & Work
+               <button class="button" onclick="homeMarker(), workMarker()">
+                  Show on Map
+               </button>
+            </summary>
+            <ul id="homeWork"></ul>
+         </details>
+         <details>
+            <summary>
+               Areas you may have visited in the last two years
+               <button class="button" onclick="allAreaMarkers()">
+                  Show on Map
+               </button>
+            </summary>
+            <ul id="areasTwoYrs">
+               <!--Snapchat's data export functionality must have an error in it-->
+               <li style="font-weight: bold">
+                  Some markers won't correspond because the datafile has the wrong postal code associated with the
+                  region.
+               </li>
+               <!--Likely due to carrier IP addresses or VPN use-->
+               <li style="font-weight: bold">
+                  Some locations you may have never visited. This is because Snapchat will mis-identify your location
+                  from time to time.
+               </li>
+            </ul>
+         </details>
+         <details>
+            <summary>
+               Businesses and public places you may have visited
+            </summary>
+            <ul id="businesses"></ul>
+         </details>
+         <details>
+            <summary>Frequent/Latest Locations</summary>
+            <ul id="freqLoc"></ul>
+         </details>
+         <details>
+            <summary>
+               Top Locations Per Six-Day Period
+               <button class="button" onclick="allTopMarkers(hist['Top Locations Per Six-Day Period']);">
+                  Show on Map
+               </button>
+            </summary>
+            <ul id="topPerSix"></ul>
+         </details>
+         <details>
+            <summary>
+               Daily Top Locations
+               <button class="button" onclick="allTopMarkers(hist['Daily Top Locations']);">
+                  Show on Map
+               </button>
+            </summary>
+            <ul id="dailyTop"></ul>
+         </details>
+         <details>
+            <summary>
+               Location History (past 6 months)
+               <button class="button" id="locHistBtn" onmouseover="warnAllHist();" onclick="allHistMarkers()" title="This could run slow so give it a minute if you click this button">
+                  Show on Map
+               </button>
+            </summary>
+            <ul id="locationHistory"></ul>
+         </details>
+      </div>
+
+      <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+      <script
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWBiNjlecS2ZLkEWnuUE4_xa9v2CvwMXw&callback=initMap&libraries=&v=weekly"
+         async></script>
+
+      <script src="Location.js"></script>
+   </div>
+</body>
+
+</html>

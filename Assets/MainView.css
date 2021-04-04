@@ -1,0 +1,260 @@
+* {
+   font-family: "Roboto", sans-serif; /* Seclects the font to be used from externally linked Google fonts CSS sheet*/
+   outline: none;
+}
+
+html,
+body {
+   line-height: 1.5;
+   margin: 0;
+   padding: 0;
+   background-color: rgb(218, 218, 218);
+   /* height: 85%; Broke the header sticky attribute*/
+}
+
+#map {
+   height: 450px; /*Work on this to make responsive*/
+}
+
+div.header {
+   background-color: rgba(45, 45, 45, 0.98); /*header background color*/
+   color: white; /* Changes the color of the text in the header*/
+   font-size: 2.7em; /* Changes the size of the text in the header*/
+   text-align: center; /*centers header text*/
+   position: sticky; /* Keeps the header at the top even while scrolling*/
+   top: 0; /*positions header at the top of the page*/
+   z-index: 3; /* Keeps the header from being hidden behind other elements while scrolling*/
+   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.74); /*Adds a shadow to the element*/
+   font-weight: 300;
+}
+
+/* https://www.w3schools.com/css/css_navbar_vertical.asp */
+ul.sidenav {
+   list-style-type: none; /* Removes default style attributes from list elements*/
+   margin: 0; /*allows the nav bar to be right up against other elements (and the edge of the window)*/
+   padding: 0; /*allows the content within the nav bar to push up to the edge of the nav bar*/
+   width: 10%; /*Restricts the nav bar to only the left 10% of the screen*/
+   background-color: rgba(45, 45, 45, 0.98);
+   position: fixed; /*fixes position of the nav bar so that it doesnt move from the left side of the screen*/
+   height: 100%; /*Sets the nav bar to span the whole height of the scree*/
+   overflow: auto; /*allows the nav bar to become scrollable if the height of the window is too short*/
+   text-align: center; /*Centers the text within the nav bar (horozontally)*/
+   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.479); /*Adds a shadow to the element*/
+}
+
+ul.sidenav li a {
+   display: block; /*Sets the list elements (and the links) as blocks (that are clickable because of the "a" attribute)*/
+   color: white; /*Sets the text color*/
+   padding: 10px 5px; /*Sets padding within the block elements so that the text within has some space to breath*/
+   text-decoration: none; /*Removes the decoration and other attributes from the links (Links have wierd attributes like being blue and underlined and changing color after that site has been visited. That is all gone now)*/
+   font-size: 1vw; /*Changes the font size but also makes it responsive so that as the nav bar changes size, the text can also change size so that it doesn't get cut off*/
+   border-top: 1px solid black; /*Sets a border along the top of each element. This seperates them visually*/
+}
+
+ul.sidenav li:last-child a {
+   border-bottom: 1px solid black;
+}
+
+ul.sidenav li a:hover {
+   background-color: rgba(70, 70, 70, 0.98);
+   color: white; /*Sets the text color*/
+}
+
+div.infoPane {
+   background-color: rgba(45, 45, 45, 0.98);
+   margin-left: 85%; /*pushes the div to the right hand side of the page*/
+   width: 15%; /*ends the div at the edge of the page*/
+   position: fixed; /*fixes position of the nav bar so that it doesnt move from the left side of the screen*/
+   height: 100%; /*Sets the nav bar to span the whole height of the scree*/
+   overflow: auto; /*allows the nav bar to become scrollable if the height of the window is too short*/
+   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.479); /*Adds a shadow to the element*/
+   color: white;
+}
+
+div.info {
+   font-size: 1vw;
+   margin: 10px;
+}
+
+div.content {
+   margin-left: 10%; /*Sets the content container so that it doesn't overlap with the nav bar*/
+   margin-right: 15%; /* Sets the content container so that it doesn't overlap with the info pannel*/
+   padding: 30px;
+   height: 100%;
+}
+
+/* from w3 schools https://www.w3schools.com/howto/howto_js_rangeslider.asp */
+.slider {
+   width: 100%; /* Full-width */
+   height: 25px; /* Specified height */
+   background: #d3d3d3; /* Grey background */
+   opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+   transition: opacity 0.2s;
+}
+
+.slider:hover {
+   opacity: 1;
+}
+
+div.timeline {
+   border-color: black;
+   border-style: solid;
+   border-radius: 1em;
+   display: grid;
+   padding: 10px 5px 0px 5px;
+}
+
+div.playcontainer {
+   grid-column-start: 1;
+   grid-column-end: 2;
+}
+
+div.clearMarkers {
+   grid-column-start: 29;
+   grid-column-end: 30;
+}
+
+div.slidecontainer {
+   grid-column-start: 2;
+   grid-column-end: 28;
+}
+
+div.timelinePosition {
+   grid-row-start: 2;
+   grid-row-end: 3;
+   grid-column-start: 15;
+}
+
+div.buttons {
+   text-align: center;
+}
+
+div.expandableLists {
+   padding: 10px 0 20px 0;
+   column-count: 2;
+}
+
+details {
+   break-inside: avoid;
+}
+
+/* Styles the play/pause button for the timeline... Weird bug with it moving up when paused... Low-prio
+/* https://css-tricks.com/making-pure-css-playpause-button/ */
+button.play {
+   --wide: 10px;
+   border: 0;
+   background: transparent;
+   box-sizing: border-box;
+   width: 0;
+   height: calc(var(--wide) * 2);
+   border-color: transparent transparent transparent #202020;
+   transition: 100ms all ease;
+   cursor: pointer;
+
+   border-style: solid;
+   border-width: var(--wide) 0 var(--wide) calc(var(--wide) * 60 / 37);
+}
+button.pause {
+   --wide: 10px;
+   border: 0;
+   background: transparent;
+   box-sizing: border-box;
+   width: 0;
+   height: calc(var(--wide) * 2);
+   border-color: transparent transparent transparent #202020;
+   transition: 100ms all ease;
+   cursor: pointer;
+
+   border-style: double;
+   border-width: 0 0 0 calc(var(--wide) * 60 / 37);
+}
+button.play:hover {
+   border-color: transparent transparent transparent #404040;
+}
+button.paused:hover {
+   border-color: transparent transparent transparent #404040;
+}
+
+/****** CSS for responsive webpage ******/
+/******  Works okay, not perfect  ******/
+
+@media screen and (max-width: 950px) {
+   /*Changes the following attributes when the width of the window is less than 950 pixels*/
+
+   ul.sidenav {
+      width: 100%; /*Changes the width of the nav bar to take up the whole width of the screen*/
+      height: auto; /*Changes the height of the Nav Bar so that it only takes up what it needs*/
+      position: relative; /*Adjusts the position of the nav bar so it can be scrolled past and the content underneath can be viewed*/
+   }
+
+   ul.sidenav li a {
+      font-size: 1em; /*Font size change because the 1.3vw is too small on this screen size*/
+      padding: 8px; /*Changes the padding so that the nav bar boxes aren't too big*/
+   }
+
+   div.content {
+      margin-left: 2%; /*sets the content so that it can span the whole screen instead of having an empty space to the left*/
+      /* column-count: 1; Changes the multicolumn layout to only one column of content */
+   }
+
+   ul.sidenav form {
+      font-size: 1em; /*Font size change because the 1.3vw is too small on this screen size*/
+   }
+
+   div.infoPane {
+      width: 100%; /*Changes the width of the nav bar to take up the whole width of the screen*/
+      height: auto; /*Changes the height of the Nav Bar so that it only takes up what it needs*/
+      position: relative;
+      margin-left: 0%;
+   }
+
+   div.content {
+      margin-right: 0%;
+   }
+
+   div.expandableLists {
+      column-count: 1;
+   }
+}
+
+@media only screen and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+   /*Applies this layout to high DPI devices that are in portrait orientation (Usually mobile devices)*/
+   /*The problem with using this to apply this CSS to mobile devices is that it also applies it to high DPI desktop devices when the browser window is taller than it is wide*/
+
+   html,
+   body {
+      zoom: 160%; /*zoom makes everything big enough high dpi displays*/
+   }
+
+   ul.sidenav {
+      width: 100%; /*Changes the width of the nav bar to take up the whole width of the screen*/
+      height: auto; /*Changes the height of the Nav Bar so that it only takes up what it needs*/
+      position: relative; /*Adjusts the position of the nav bar so it can be scrolled past and the content underneath can be viewed*/
+   }
+
+   ul.sidenav li a {
+      font-size: 1em; /*Font size change because the 1.3vw is too small on this screen size*/
+      padding: 8px; /*Changes the padding so that the nav bar boxes aren't too big*/
+   }
+
+   div.infoPane {
+      width: 100%; /*Changes the width of the nav bar to take up the whole width of the screen*/
+      height: auto; /*Changes the height of the Nav Bar so that it only takes up what it needs*/
+      position: relative;
+      margin-left: 0%;
+   }
+
+   div.content {
+      margin: 0; /*sets the content so that it can span the whole screen instead of having an empty space to the left*/
+      /* column-count: 1; Changes the multicolumn layout to only one column of content */
+   }
+
+   ul.sidenav form {
+      font-size: 1em; /*Font size change because the 1.3vw is too small on this screen size*/
+   }
+
+   div.expandableLists {
+      column-count: 1;
+   }
+}

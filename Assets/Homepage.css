@@ -1,0 +1,88 @@
+* { 
+    font-family: 'Roboto', sans-serif; /* Seclects the font to be used from externally linked Google fonts CSS sheet*/
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: white; /*sets the background for the whole document*/
+    margin: 0;
+    line-height: 1.5;
+    height: 85%;
+    margin: 0;
+    padding: 0;
+}
+
+div.header{
+    background-color: rgba(45,45,45,0.98); /*header background color*/
+    color: white; /* Changes the color of the text in the header*/
+    font-size: 2.7em; /* Changes the size of the text in the header*/
+    text-align: center; /*centers header text*/
+    position: sticky; /* Keeps the header at the top even while scrolling*/
+    top: 0; /*positions header at the top of the page*/
+    z-index:3; /* Keeps the header from being hidden behind other elements while scrolling*/
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.74); /*Adds a shadow to the element*/
+    font-weight: 300;
+}
+
+div.content {
+    padding: 30px; 
+    background-color: rgb(218, 218, 218);
+    box-shadow: 5px 5px 10px rgba(48, 48, 48, 0.479);
+    margin:30px;
+}
+
+div.column{
+    float: left;
+    width: 50%;
+    padding-top:0;
+    padding-right: 30px; 
+    /* margin-right: 10px; */
+}
+
+.contentSplit:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#drop_zone{
+    border: 2px dashed black;
+    width: 100%;
+    height: 100px;
+    background: rgba(0, 0, 0, 0.308);
+    margin-top: 30px;
+}
+
+/******************************************************************************************************
+I learned this method of making an iFrame responsive from https://www.youtube.com/watch?v=X4t0JxiBeO0 */
+
+div.responsive{ 
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.479); /*Adds a shadow to the element*/
+}
+
+div.responsive iframe {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+   }
+
+/******************************************************************/
+
+@media screen and (max-width: 950px) { /*Changes the following attributes when the width of the window is less than 950 pixels*/
+    div.column{
+        float:none;
+        width: 100%;
+    }
+}
+
+@media only screen and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2) { /*Applies this layout to high DPI devices that are in portrait orientation (Usually mobile devices)*/    
+    div.column{
+        float:none;
+        width: 100%;
+    }
+}

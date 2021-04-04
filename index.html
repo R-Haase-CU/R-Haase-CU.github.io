@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <title>Homepage</title>
+   <link rel="icon" href="#" type="image/gif" sizes="16x16" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="Assets/Homepage.css" />
+</head>
+<!-- Create a link on the view pages that clears localStorage and returns user to this homepage -->
+
+<body>
+   <div class="header">Snapchat User Data Visualizer</div>
+   <div class="content">
+      <div class="contentSplit">
+         <div class="column">
+            <h1>Welcome to the User Data Visualizer</h1>
+            <p>
+               The goal of user data visualizer is to enable the users of internet
+               services to see and understand what data is being collected
+               on them when they use these services. The system currently
+               supports user data files from Snapchat but further
+               support for more platforms will come in the future. Please refer to the video or
+               the instructions below to see how you can request and view the data Snapchat is collecting on you.
+            </p>
+            <details>
+               <summary>Watch video or click here for instructions</summary>
+               <ol>
+                  <li>
+                     Request your user data from Snapchat:
+                  </li>
+                  <ul>
+                     <li>
+                        Go to the
+                        <a href="https://accounts.snapchat.com/accounts/welcome" target="_blank"
+                           rel="noopener noreferrer">Snapchat account website</a>, login, and go to
+                        <a href="https://accounts.snapchat.com/accounts/downloadmydata" target="_blank"
+                           rel="noopener noreferrer">"MY DATA"</a>.
+                     </li>
+                     <li>
+                        Scroll to the bottlom and select "Submit Request."
+                        <br />
+                        &emsp; (This will request an email to be sent to your
+                        inbox)
+                     </li>
+                     <li>
+                        Once the email arrives, click the download link
+                        provided in the email.
+                     </li>
+                     <li>
+                        Snapchat has a support page with more detailed information
+                        <a href="https://support.snapchat.com/en-US/a/download-my-data" target="_blank"
+                           rel="noopener noreferrer">here</a>.
+                     </li>
+                  </ul>
+                  <li>
+                     Download the .zip file from the link in the email that
+                     you recieved from Snapchat.
+                  </li>
+                  <li>Extract the .zip file and open the .json folder.</li>
+                  <li>
+                     Select all of the files in the foler and drag them into the
+                     import drop zone below.
+                  </li>
+                  <li>
+                     Once the files have been imported into the browser, the
+                     application will launch and you will be able to view
+                     your data.
+                  </li>
+               </ol>
+            </details>
+         </div>
+         <div class="column">
+            <div class="responsive">
+               <iframe src="https://www.youtube.com/embed/Fn21QOAz9P4" allowfullscreen="allowfullscreen"></iframe>
+            </div>
+         </div>
+      </div>
+      <!-- Mozzilla https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop ondragleave="resetColor();"-->
+      <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);"
+         ondragleave="leaveHandler();" style="
+               border: 2px dashed black;
+               width: 100%;
+               height: 100px;
+               background: rgba(0, 0, 0, 0.308);
+               margin-top: 30px;
+            ">
+         <h1 style="text-align: center">
+            <a href="#" onclick="document.getElementById('fileUpload').click();">Click or Drag & Drop Files to
+               Import</a>
+         </h1>
+         <input type="file" id="fileUpload" name="myfile" multiple style="display: none" />
+      </div>
+   </div>
+   <script src="upload.js"></script>
+   <p><br /></p>
+</body>
+
+</html>
