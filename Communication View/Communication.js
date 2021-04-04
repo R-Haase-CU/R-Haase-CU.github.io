@@ -1,6 +1,7 @@
 const chatHist = getAndParse('chat_history.json');
 const snapHist = getAndParse('snap_history.json');
 const friends = getAndParse('friends.json');
+const callLogs = getAndParse('talk_history.json');
 
 //https://stackoverflow.com/a/35092559/15325119
 const userNamesChat = [...new Set(chatHist["Received Chat History"].map(item => item.From))];
@@ -134,10 +135,10 @@ function addCount(array, elmntId){
     let item = document.getElementById(elmntId);
 
     if(array === undefined){
-        //issue where chart tooltips no longer work if the element is removed
-        // let parent = document.getElementById(elmntId).parentElement;
-        // parent.remove();
         item.appendChild(document.createTextNode(` (Not recorded in dataset)`));
+        //Code below was replaced with above due to an issue where chart tooltips no longer work if the element is removed
+            // let parent = document.getElementById(elmntId).parentElement;
+            // parent.remove();
     }else{
         let num = array.length;
         item.appendChild(document.createTextNode(` (${num})`));
@@ -180,6 +181,33 @@ function listElements(element){
 function listShortcuts(element){
     let item = document.createElement("li");
     item.appendChild(document.createTextNode(`${element["Shortcut Name"]} created on ${element.Created}`));
+    return item;
+}
+
+function createCallLogs(array, listName){
+    let parent = document.getElementById("callLogsSum").parentElement;
+    let list = document.createElement("ul");
+    list.appendChild(document.createTextNode(listName));
+
+    array.forEach(element => list.appendChild(listCalls(element)));
+
+    parent.appendChild(list);
+}
+
+createCallLogs(callLogs["Outgoing Calls"], `Outgoing Calls (${callLogs["Outgoing Calls"].length})`)
+createCallLogs(callLogs["Incoming Calls"], `Incoming Calls (${callLogs["Incoming Calls"].length})`)
+createCallLogs(callLogs["Completed Calls"], `Completed Calls (${callLogs["Completed Calls"].length})`)
+createCallLogs(callLogs["Chat Sessions"], `Chat Sessions (${callLogs["Chat Sessions"].length})`)
+createCallLogs(callLogs["Game Sessions"], `Game Sessions (${callLogs["Game Sessions"].length})`)
+
+function listCalls(element){
+    let item = document.createElement("li");
+    item.appendChild(document.createTextNode(`${element["Type"]} call on ${element["Date & Time"]}`));
+
+    // if(element.Timestamp != (undefined)){
+        item.setAttribute("title", `${element["People in Chat"]} participants for ${element["Length (sec)"]} seconds on a ${element["Network"]} Network in ${element["City"]}, ${element["Country"]}`);
+    // }
+    
     return item;
 }
 
