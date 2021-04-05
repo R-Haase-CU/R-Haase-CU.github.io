@@ -81,6 +81,11 @@ div.responsive iframe {
 }
 
 @media only screen and (orientation:portrait) and (-webkit-min-device-pixel-ratio: 2) { /*Applies this layout to high DPI devices that are in portrait orientation (Usually mobile devices)*/    
+    html,
+    body {
+       zoom: 120%; /*zoom makes everything big enough high dpi displays*/
+    }
+    
     div.column{
         float:none;
         width: 100%;

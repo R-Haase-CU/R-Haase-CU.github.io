@@ -28,6 +28,13 @@ addCount(friends["Hidden Friend Suggestions"], "hiddenFriendSugSum")
 addCount(friends["Ignored Snapchatters"], "ignSnapchattersSum")
 addCount(friends["Shortcuts"], "shortcutsSum")
 
+createCallLogs(callLogs["Outgoing Calls"], `Outgoing Calls (${callLogs["Outgoing Calls"].length})`)
+createCallLogs(callLogs["Incoming Calls"], `Incoming Calls (${callLogs["Incoming Calls"].length})`)
+createCallLogs(callLogs["Completed Calls"], `Completed Calls (${callLogs["Completed Calls"].length})`)
+createCallLogs(callLogs["Chat Sessions"], `Chat Sessions (${callLogs["Chat Sessions"].length})`)
+createCallLogs(callLogs["Game Sessions"], `Game Sessions (${callLogs["Game Sessions"].length})`)
+
+//Creates a count of each media type in the same order as the media types in the mediaTypes array
 for (let i = 0; i < mediaTypes.length; i++) {
     //https://stackoverflow.com/a/56226304/15325119
     numOf.push(mediaType.filter(type => type === mediaTypes[i]).length);
@@ -155,7 +162,6 @@ function createList(array, elmntId){
 
     if (array === friends.Shortcuts) {
         array.forEach(element =>
-            // console.log(element),
             list.appendChild(listShortcuts(element))
         );
     } else {
@@ -193,12 +199,6 @@ function createCallLogs(array, listName){
 
     parent.appendChild(list);
 }
-
-createCallLogs(callLogs["Outgoing Calls"], `Outgoing Calls (${callLogs["Outgoing Calls"].length})`)
-createCallLogs(callLogs["Incoming Calls"], `Incoming Calls (${callLogs["Incoming Calls"].length})`)
-createCallLogs(callLogs["Completed Calls"], `Completed Calls (${callLogs["Completed Calls"].length})`)
-createCallLogs(callLogs["Chat Sessions"], `Chat Sessions (${callLogs["Chat Sessions"].length})`)
-createCallLogs(callLogs["Game Sessions"], `Game Sessions (${callLogs["Game Sessions"].length})`)
 
 function listCalls(element){
     let item = document.createElement("li");

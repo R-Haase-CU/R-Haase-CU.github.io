@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <title>Location View</title>
+   <link rel="icon" href="#" type="image/gif" sizes="16x16" />
+   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="../Assets/MainView.css" />
+   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body>
+   <div class="header">Memories</div>
+
+   <ul class="sidenav">
+      <li><a href="../Location View/Location.html">Location</a></li>
+      <li><a href="../Communication View/Communication.html">Communication</a></li>
+      <li><a href="#">Profile</a></li>
+      <li><a href="#">History</a></li>
+      <li><a href="#">Stories</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">Memories</a></li>
+   </ul>
+
+   <div class="infoPane">
+      <div class="info">
+         <h3>Snapchat Memories</h3>
+         <p>Snapchat has a cloud photo storage feature called Memories.</p>
+         <!-- None of the links in the sample datasets will work inorder to protect the privacy of the user's who's data sets they are -->
+         <p>Click any link to view/download the corresponding photo/video.</p>
+         <!-- Need to improve his script to include meta-data for the content including atleast the original time the photo was taken but ideally the location data aswell -->
+         <p>I intended on having 1-click downloading for all Memories but ran out of time to figure out how to integrate <a href="https://github.com/ToTheMax/Snapchat-All-Memories-Downloader" target="_blank" rel="noopener noreferrer" style="color: white;">this</a> script into the system. Feel free to use his script to download all of your memories at once.</p>
+         <div class="buttons">
+            <!-- This should redirect to a new page about how to request Snapchat to delete their data -->
+            <a href="../index.html">
+               <button onclick="localStorage.clear()">Clear Data and Exit</button></a>
+         </div>
+      </div>
+   </div>
+
+    <div class="content">
+        <div class = "pie" >
+            <canvas id="mediaChart"></canvas>
+        </div>
+        <br>
+        <ul id="memoriesList"></ul>
+        <script src="Memories.JS"></script>
+    </div>
+</body>
+
+</html>

@@ -131,12 +131,16 @@ div.buttons {
 }
 
 div.expandableLists {
-   padding: 10px 0 20px 0;
+   /* padding: 10px 0 20px 0; */
    column-count: 2;
 }
 
 details {
    break-inside: avoid;
+}
+
+#memoriesList{
+   column-count: 2;
 }
 
 /* Styles the play/pause button for the timeline... Weird bug with it moving up when paused... Low-prio
@@ -216,6 +220,11 @@ button.paused:hover {
    div.expandableLists {
       column-count: 1;
    }
+   
+   #memoriesList{
+      column-count: 1;
+   }
+
 }
 
 @media only screen and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
@@ -255,6 +264,10 @@ button.paused:hover {
    }
 
    div.expandableLists {
+      column-count: 1;
+   }
+
+   #memoriesList{
       column-count: 1;
    }
 }
