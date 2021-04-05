@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Profile View</title>
+    <link rel="icon" href="#" type="image/gif" sizes="16x16" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../Assets/MainView.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body>
+    <div class="header">Snapchat Profile</div>
+
+    <ul class="sidenav">
+        <li><a href="../Location View/Location.html">Location</a></li>
+        <li><a href="../Communication View/Communication.html">Communication</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="../History View/History.html">History</a></li>
+        <li><a href="../Stories View/Stories.html">Stories</a></li>
+        <li><a href="../Shop View/Shop.html">Shop</a></li>
+        <li><a href="../Memories View/Memories.html">Memories</a></li>
+    </ul>
+
+    <div class="infoPane">
+        <div class="info">
+            <h3>Snapchat Profile Data</h3>
+            <p>I'll write something better tomorrow, for now its sleep time</p>
+            <p>It is unclear from what time period the usage and engagement data is taken from but a good guess is the past month (given that has commonly been the cutoff for other datasets) </p>
+            <div class="buttons">
+                <a href="../index.html">
+                    <button onclick="localStorage.clear()">Clear Data and Exit</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class = "pie" >
+            <canvas id="timeChart"></canvas>
+        </div>
+        <div class = "bar">
+            <canvas id="engagementChart" style="display: none;"></canvas>
+        </div>
+        <div class="buttons">
+            <button type="button" id="btn1" onclick="switchChart(1);" style="background: lightgrey;">Usage</button>
+            <button type="button" id="btn2" onclick="switchChart(2);">Engagement</button>
+        </div>
+
+        <script src="ProfileCharts.JS"></script>
+
+        <br>
+
+        <div class="expandableLists">
+            <details>
+               <summary id="acct">Account</summary>
+            </details>
+            <details>
+               <summary id="contentInterests">Content Interests</summary>
+            </details>
+            <details>
+               <summary id="demographics">Demographics</summary>
+            </details>
+            <details>
+               <summary id="adInteractions">Ads you've interacted with</summary>
+            </details>
+            <details>
+               <summary id="adInterests">Interest categories for advertising</summary>
+            </details>
+            <p id="adId">Mobile advertising ID: </p>
+         </div>
+
+         <script src="ProfileLists.JS"></script>
+    </div>
+</body>
+
+</html>
