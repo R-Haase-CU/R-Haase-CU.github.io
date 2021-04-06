@@ -66,7 +66,6 @@ div.infoPane {
    width: 15%; /*ends the div at the edge of the page*/
    position: fixed; /*fixes position of the nav bar so that it doesnt move from the left side of the screen*/
    height: 100%; /*Sets the nav bar to span the whole height of the scree*/
-   overflow: auto; /*allows the nav bar to become scrollable if the height of the window is too short*/
    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.479); /*Adds a shadow to the element*/
    color: white;
 }
@@ -74,6 +73,7 @@ div.infoPane {
 div.info {
    font-size: 1vw;
    margin: 10px;
+   overflow: auto; /*allows the nav bar to become scrollable if the height of the window is too short*/
 }
 
 div.content {

@@ -49,7 +49,6 @@ function handleFiles(files) {
          throw "Too big for Local Storage";
       }else
          {for (var i = 0; i < files.length; i++) {
-            console.log(files[i].size);
             //checks for supported file type (currently only json)
             if (files[i].type === "application/json") {
                //checks file names against list of known supported files
@@ -92,7 +91,7 @@ function handleFiles(files) {
             "Select all files for import by selecting the one at the top of the list, holding shift, selecting the one at the bottom, then releasing shift. Refer to video for more details."
          );
       } else if (err === "Too big for Local Storage"){
-         alert("Files too big. Unfortunately, due to the limitations of the application architecture, the system can only handle about 5.6MB of data at once. Some Snapchat data files can be too big if you use Snpachat alot.")
+         alert("Files too big. Unfortunately, due to the limitations of the application architecture, the system can only handle about 5.6MB of data at once. Some Snapchat data files can be too big if you use Snpachat excessively.")
       }else {
          alert(
             "Please review and follow instructions to download and then import the correct files."
