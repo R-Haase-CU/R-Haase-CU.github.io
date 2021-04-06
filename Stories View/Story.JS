@@ -22,6 +22,9 @@ formatAnalyticsData();
 const subs = getAndParse("subscriptions.json");
 const discover = getAndParse("user_profile.json")["Discover Channels Viewed"];
 
+listObjArray(discover, "channelViews")
+listObjectInfo(subs, "subs");
+
 ///////////////////////
 
 function getAndParse(file) {
@@ -246,5 +249,57 @@ let storyAnalyticsChart = new Chart(analyticsChart, {
 });
 
 //////////////////////// DOM creation
-console.log(subs);
-console.log(discover);
+function listObjArray(array, elmntId){
+    let parent = document.getElementById(elmntId).parentElement;
+    let list = document.createElement("ul");
+
+    array.forEach(element => 
+        { if (element["Channel Name"].length < 30){  //ignores the big hex-strings that make no sense to users
+            list.appendChild(listObjElements(element)) 
+        } 
+    })
+
+    parent.appendChild(list);
+}
+
+function listObjElements(element){
+    let item = document.createElement("li");
+
+    item.appendChild(document.createTextNode(element["Channel Name"]));
+    
+
+    return item;
+
+}
+
+function listObjectInfo(object, elmntId){
+    let parent = document.getElementById(elmntId).parentElement;
+    let list = document.createElement("ul");
+
+    for(i=0; i<Object.keys(object).length; i++){
+        let item = document.createElement("li");
+        let array = object[`${(Object.keys(object)[i])}`];
+
+        if(array != object["Last Active Timezone"]){
+            let text = `${(Object.keys(object)[i])} (${array.length})`
+            let subList = document.createElement("ul");
+            if(array.length > 0 ){
+                Array.prototype.forEach.call(array, element => subList.appendChild(listElements(element)))
+            }   
+            item.appendChild(document.createTextNode(text));     
+            list.appendChild(item);
+            list.appendChild(subList);
+        }
+
+
+    }
+
+    parent.appendChild(list);
+}
+
+function listElements(element){
+    let item = document.createElement("li");
+    item.appendChild(document.createTextNode(element));
+    
+    return item;
+}
