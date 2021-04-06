@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>View Title</title>
+    <link rel="icon" href="#" type="image/gif" sizes="16x16" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../Assets/MainView.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+</head>
+
+<body>
+    <div class="header">Page Title</div>
+
+    <ul class="sidenav">
+        <li><a href="../Location View/Location.html">Location</a></li>
+        <li><a href="../Communication View/Communication.html">Communication</a></li>
+        <li><a href="../Profile View/Profile.html">Profile</a></li>
+        <li><a href="../History View/History.html">History</a></li>
+        <li><a href="../Stories View/Stories.html">Stories</a></li>
+        <li><a href="../Shop View/Shop.html">Shop</a></li>
+        <li><a href="../Memories View/Memories.html">Memories</a></li>
+    </ul>
+
+    <div class="infoPane">
+        <div class="info">
+            <h3>Words Words</h3>
+            <p>Explination for chart data is required. Stories vs Snaps/Videos is confusing. Reference Snapchat's .html file</p>
+            <div class="buttons">
+                <a href="../index.html">
+                    <button onclick="localStorage.clear()">Clear Data and Exit</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class = "bar1">
+            <canvas id="viewsChart"></canvas>
+        </div>
+        <div class = "bar2">
+            <canvas id="analyticsChart" style="display:none;"></canvas>
+        </div>
+        <div class="buttons">
+            <button type="button" id="btn1" onclick="switchChart(1);" style="background: lightgrey;">Snaps</button>
+            <button type="button" id="btn2" onclick="switchChart(2);">Chats</button>
+        </div>
+        <script src="story.js"></script>
+    </div>
+</body>
+
+</html>
