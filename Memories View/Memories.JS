@@ -37,7 +37,7 @@ function listElements(element){
     let item = document.createElement("li");
     let link = document.createElement("a");
     item.appendChild(document.createTextNode(`${element["Media Type"]} saved on ${element.Date}: `));
-    link.appendChild(document.createTextNode("Download"));
+    link.appendChild(document.createTextNode("Does Not Work"));
     link.setAttribute("href", element["Download Link"]);
     link.setAttribute("target", "_blank");
     link.setAttribute("rel", "noopener noreferrer");
