@@ -68,7 +68,7 @@ function handleFiles(files) {
       }
       //redirects to Location View after successful file import
       //Delay added because there was an error where the loop would finish execution and redirect the page before larger files were finished being read and added to localStorage
-      setTimeout(() => { window.location.href = "Location View/Location.html"; }, 3000);
+      setTimeout(() => { window.location.href = "Location View/Location.html"; }, 500);
 
    } catch (err) {
       if (err === "Wrong File Type") {
