@@ -6,24 +6,6 @@ const rank = getAndParse("ranking.json");
 //add the mobile ad ID to the appropriate HTMl element
 document.getElementById("adId").appendChild(document.createTextNode(profile["Mobile Ad Id"]));
 
-function createList(array, elmntId){
-    let parent = document.getElementById(elmntId).parentElement;
-    let list = document.createElement("ul");
-
-    // if (array === friends.Shortcuts) {
-    //     array.forEach(element =>
-    //         list.appendChild(listShortcuts(element))
-    //     );
-    // } else {
-    //     array.forEach(element =>
-    //         list.appendChild(listElements(element))
-    //     );
-    // }
-
-    parent.appendChild(list);
-}
-
-
 function listObjectInfo(object, elmntId, title){
     let parent = document.getElementById(elmntId).parentElement;
     let list = document.createElement("ul");

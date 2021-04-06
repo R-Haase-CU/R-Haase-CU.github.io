@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>History View</title>
+    <link rel="icon" href="#" type="image/gif" sizes="16x16" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../Assets/MainView.css" />
+</head>
+
+<body>
+    <div class="header">History</div>
+
+    <ul class="sidenav">
+        <li><a href="../Location View/Location.html">Location</a></li>
+        <li><a href="../Communication View/Communication.html">Communication</a></li>
+        <li><a href="../Profile View/Profile.html">Profile</a></li>
+        <li><a href="#">History</a></li>
+        <li><a href="../Stories View/Stories.html">Stories</a></li>
+        <li><a href="../Shop View/Shop.html">Shop</a></li>
+        <li><a href="../Memories View/Memories.html">Memories</a></li>
+    </ul>
+
+    <div class="infoPane">
+        <div class="info">
+            <h3>Words Words</h3>
+            <p>Words words words...</p>
+            <div class="buttons">
+                <a href="../index.html">
+                    <button onclick="localStorage.clear()">Clear Data and Exit</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="expandableLists">
+            <details>
+               <summary id="acctHist">Account History</summary>
+            </details>
+            <details>
+               <summary id="loginHist">Login History</summary>
+            </details>
+            <details>
+                <summary id="deviceHist">Device History</summary>
+             </details>
+            <details>
+               <summary id="searchHist">Search History</summary>
+            </details>
+            <details>
+               <summary id="webHist">Web Interactions</summary>
+            </details>
+            <details>
+               <summary id="appHist">App Interactions</summary>
+            </details>
+         </div>
+        <script src="History.JS"></script>
+    </div>
+</body>
+
+</html>
