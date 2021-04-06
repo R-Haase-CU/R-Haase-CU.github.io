@@ -40,35 +40,43 @@ const supportedFiles = [
 
 function handleFiles(files) {
    try {
-      //Throws error if user accidentally imports only one file
-      //May be better to check for all 33 files uploaded but if there are more than one files selected but not all, it is assumed to be intentional
+      let totalSize=0;
       for (var i = 0; i < files.length; i++) {
-         //checks for supported file type (currently only json)
-         if (files[i].type === "application/json") {
-            //checks file names against list of known supported files
-            //https://stackoverflow.com/a/5582621/15325119
-            if (new RegExp(supportedFiles.join("|")).test(files[i].name)) {
-               //if checks are passed, files get added to browser localStorage before user is redirected to the Location View
-               let FILE_KEY = files[i].name;
-               const reader = new FileReader();
-               reader.onload = function () {
-                  let save = JSON.parse(reader.result);
-                  window.localStorage.setItem(FILE_KEY, JSON.stringify(save));
-               };
-               reader.readAsText(files[i]);
-            } else {
-               throw "Unsupported Data File";
-            }
-         } else {
-            throw "Wrong File Type";
-         }
+         totalSize = totalSize + files[i].size;
       }
+      //checks to make sure that the total file size is not too big for local storage
+      if(totalSize > 5700000){
+         throw "Too big for Local Storage";
+      }else
+         {for (var i = 0; i < files.length; i++) {
+            console.log(files[i].size);
+            //checks for supported file type (currently only json)
+            if (files[i].type === "application/json") {
+               //checks file names against list of known supported files
+               //https://stackoverflow.com/a/5582621/15325119
+               if (new RegExp(supportedFiles.join("|")).test(files[i].name)) {
+                  //if checks are passed, files get added to browser localStorage before user is redirected to the Location View
+                  let FILE_KEY = files[i].name;
+                  const reader = new FileReader();
+                  reader.onload = function () {
+                     let save = JSON.parse(reader.result);
+                     window.localStorage.setItem(FILE_KEY, JSON.stringify(save));
+                  };
+                  reader.readAsText(files[i]);
+               } else {
+                  throw "Unsupported Data File";
+               }
+            } else {
+               throw "Wrong File Type";
+            }
+         }}
+      //if users only upload one file, it is assumed to have been done on accident.
       if (files.length === 1) {
          throw "Only 1 file imported";
       }
       //redirects to Location View after successful file import
       //Delay added because there was an error where the loop would finish execution and redirect the page before larger files were finished being read and added to localStorage
-      setTimeout(() => { window.location.href = "Location View/Location.html"; }, 200);
+      setTimeout(() => { window.location.href = "Location View/Location.html"; }, 500);
 
    } catch (err) {
       if (err === "Wrong File Type") {
@@ -83,7 +91,9 @@ function handleFiles(files) {
          alert(
             "Select all files for import by selecting the one at the top of the list, holding shift, selecting the one at the bottom, then releasing shift. Refer to video for more details."
          );
-      } else {
+      } else if (err === "Too big for Local Storage"){
+         alert("Files too big. Unfortunately, due to the limitations of the application architecture, the system can only handle about 5.6MB of data at once. Some Snapchat data files can be too big if you use Snpachat alot.")
+      }else {
          alert(
             "Please review and follow instructions to download and then import the correct files."
          );
