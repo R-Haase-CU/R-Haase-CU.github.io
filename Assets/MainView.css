@@ -68,12 +68,12 @@ div.infoPane {
    height: 100%; /*Sets the nav bar to span the whole height of the scree*/
    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.479); /*Adds a shadow to the element*/
    color: white;
+   overflow: auto; /*allows the nav bar to become scrollable if the height of the window is too short*/
 }
 
 div.info {
    font-size: 1vw;
    margin: 10px;
-   overflow: auto; /*allows the nav bar to become scrollable if the height of the window is too short*/
 }
 
 div.content {
