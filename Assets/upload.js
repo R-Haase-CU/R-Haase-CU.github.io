@@ -44,31 +44,32 @@ function handleFiles(files) {
       for (var i = 0; i < files.length; i++) {
          totalSize = totalSize + files[i].size;
       }
-      //checks to make sure that the total file size is not too big for local storage
-      if(totalSize > 5700000){
-         throw "Too big for Local Storage";
-      }else
-         {for (var i = 0; i < files.length; i++) {
+      for (var i = 0; i < files.length; i++) {
             //checks for supported file type (currently only json)
             if (files[i].type === "application/json") {
                //checks file names against list of known supported files
                //https://stackoverflow.com/a/5582621/15325119
                if (new RegExp(supportedFiles.join("|")).test(files[i].name)) {
-                  //if checks are passed, files get added to browser localStorage before user is redirected to the Location View
-                  let FILE_KEY = files[i].name;
-                  const reader = new FileReader();
-                  reader.onload = function () {
-                     let save = JSON.parse(reader.result);
-                     window.localStorage.setItem(FILE_KEY, JSON.stringify(save));
-                  };
-                  reader.readAsText(files[i]);
+                        //checks to make sure that the total file size is not too big for local storage
+                  if(totalSize < 5700000){
+                     //if checks are passed, files get added to browser localStorage before user is redirected to the Location View
+                     let FILE_KEY = files[i].name;
+                     const reader = new FileReader();
+                     reader.onload = function () {
+                        let save = JSON.parse(reader.result);
+                        window.localStorage.setItem(FILE_KEY, JSON.stringify(save));
+                     };
+                     reader.readAsText(files[i]);
+                  }else{
+                     throw "Too big for Local Storage";
+                  }
                } else {
                   throw "Unsupported Data File";
                }
             } else {
                throw "Wrong File Type";
             }
-         }}
+         }
       //if users only upload one file, it is assumed to have been done on accident.
       if (files.length === 1) {
          throw "Only 1 file imported";

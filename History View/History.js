@@ -18,7 +18,7 @@ createArrayList(profile.Interactions["App Interactions"], 'appHist');
 
             for(let j = 0; j < array.length; j++){
                 let item = document.createElement("li");
-                let text = `Changed to ${Object.values(array[j])[1]} on ${Object.values(array[j])[0]}}`
+                let text = `Changed to ${Object.values(array[j])[1]} on ${Object.values(array[j])[0]}`
 
                 item.appendChild(document.createTextNode(text));
                 list.appendChild(item);
