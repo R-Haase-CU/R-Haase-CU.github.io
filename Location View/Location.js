@@ -56,8 +56,7 @@ async function toggle() {
 
 //IIFE to change slider values based on the data imported into the system
 (function setSlider() {
-   document.getElementById("sliderPosition").max =
-      hist["Location History"].length - 1;
+   document.getElementById("sliderPosition").max = hist["Location History"].length - 1;
 })();
 
 //handles user input with the slider element

@@ -101,7 +101,6 @@ function handleFiles(files) {
    }
 }
 
-
 input.addEventListener("change", function (e) {
       handleFiles(input.files);
    },
